@@ -14,6 +14,10 @@ var data = new Date();
 var mes = new Date('', data.getMonth() + 1, 0);
 var ultDia = mes.getDate()
 
+var contador = 0
+
+var mesExtenso = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Octubro', 'Novembro', 'Dezembro']
+
 for (let i = 1; i <= ultDia; i++) {
     var td = document.createElement('td')
 
@@ -26,11 +30,12 @@ for (let i = 1; i <= ultDia; i++) {
     tdDiasSemana.classList.add('semana')
     tr2.appendChild(tdDiasSemana)
 
-    var semana = ["SEG", "TER", "QUA", "QUI", "SEX", "SAB", "DOM"]
+    var semana = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"]
 
-    //var textoDS = document.createTextNode(semana[data.getUTCDay()])
+    var textoDS = document.createTextNode(semana[data.getUTCDay()])
 
-    tdDiasSemana.innerHTML = semana[data.getUTCDay()]
+    //tdDiasSemana.innerHTML = semana[data.getUTCDay()]
+    tdDiasSemana.appendChild(textoDS)
     // linha de dado
     var tdDado = document.createElement('td')
     linhaDado.appendChild(tdDado)
@@ -45,22 +50,44 @@ for (let i = 1; i <= ultDia; i++) {
     tdDado2.classList.add('corLinha')
 
     if (tdDado2.innerHTML == "SAB") {
-
-        if (i % 2 == 1 && tdDado2.innerHTML == "SAB") {
+        contador += 1
+        if (contador == 1 || contador == 4) {
             tdDado2.classList.add('margensTabelaFinalSemana')
-            tdDado2.classList.add('trabalhou') // adicionar classe trabalhou
+            tdDado2.classList.add('trabalhou') // adicionar classe trabalhou            
+        } else if (contador == 3) {
+            tdDado2.classList.add('corFolga')
         }
+        if (contador == 4 && tdDado2.innerHTML == "SAB") {
+            localStorage.setItem(mesExtenso[data.getMonth()], contador)
+            var salvarUmDiaParaProxMes = 1
+        }
+
     }
 
     if (tdDado2.innerHTML == "DOM") {
 
-        if (i % 2 == 1) {
+        if (contador == 2) {
             tdDado2.classList.add('margensTabelaFinalSemana')
+        } else if (contador == 3) {
+            tdDado2.classList.add('corFolga')
         }
-
-
-        document.write(tdDado2.innerHTML.length)
     }
 
+    /*if (localStorage.getItem(mesExtenso[data.getMonth()]) == 4) {
+        if (tdDado2.innerHTML == "DOM") {
 
+            if (contador == 1 || contador == 4) {
+                tdDado2.classList.add('margensTabelaFinalSemanas')
+                tdDado2.classList.add('trabalhou') // adicionar classe trabalhou            
+            }
+        }
+    }*/
+
+    //fim do ciclo for
 }
+
+
+
+document.write(contador)
+document.write("<br>Mes Passado: " + data.getMonth())
+document.write(`<br>LocalStorage: ${mesExtenso[data.getMonth()]} tem  ${localStorage.getItem(mesExtenso[data.getMonth()])} Semanas.`)

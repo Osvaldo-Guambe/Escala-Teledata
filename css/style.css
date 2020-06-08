@@ -14,12 +14,20 @@ table {
     background-color: chartreuse;
 }
 
+.margensTabelaFinalSemanas {
+    background-color: rgb(20, 30, 163);
+}
+
+.corFolga {
+    background-color: aqua;
+}
 
 
 .cor {
     background-color: red;
     color: black;
 }
+
 
 .corLinha {
     color: white;
