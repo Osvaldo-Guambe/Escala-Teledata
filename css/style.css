@@ -1,0 +1,30 @@
+table {
+    border: 1px solid black;
+    margin: auto;
+    text-align: center;
+}
+
+.margensTabela {
+    border: 1px solid black;
+    color: red;
+    background-color: black;
+}
+
+.margensTabelaFinalSemana {
+    background-color: chartreuse;
+}
+
+
+
+.cor {
+    background-color: red;
+    color: black;
+}
+
+.corLinha {
+    color: white;
+}
+
+.semana {
+    font-size: 10px;
+}
