@@ -30,7 +30,7 @@ for (let i = 1; i <= ultDia; i++) {
     tdDiasSemana.classList.add('semana')
     tr2.appendChild(tdDiasSemana)
 
-    var semana = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"]
+    var semana = ["SEG", "TER", "QUA", "QUI", "SEX", "SAB", "DOM"]
 
     var textoDS = document.createTextNode(semana[data.getUTCDay()])
 
@@ -51,12 +51,12 @@ for (let i = 1; i <= ultDia; i++) {
 
     if (tdDado2.innerHTML == "SAB") {
         contador += 1
-        if (contador == 1 || contador == 4) {
-            tdDado2.classList.add('margensTabelaFinalSemana')
-            tdDado2.classList.add('trabalhou') // adicionar classe trabalhou            
-        } else if (contador == 3) {
-            tdDado2.classList.add('corFolga')
-        }
+        /* if (contador == 1 || contador == 4) {
+             tdDado2.classList.add('margensTabelaFinalSemana')
+             tdDado2.classList.add('trabalhou') // adicionar classe trabalhou            
+         } else if (contador == 3) {
+             tdDado2.classList.add('corFolga')
+         }*/
         if (contador == 4 && tdDado2.innerHTML == "SAB") {
             localStorage.setItem(mesExtenso[data.getMonth()], contador)
             var salvarUmDiaParaProxMes = 1
@@ -64,24 +64,24 @@ for (let i = 1; i <= ultDia; i++) {
 
     }
 
-    if (tdDado2.innerHTML == "DOM") {
+    /* if (tdDado2.innerHTML == "DOM") {
 
-        if (contador == 2) {
-            tdDado2.classList.add('margensTabelaFinalSemana')
-        } else if (contador == 3) {
-            tdDado2.classList.add('corFolga')
-        }
-    }
+         if (contador == 2) {
+             tdDado2.classList.add('margensTabelaFinalSemana')
+         } else if (contador == 3) {
+             tdDado2.classList.add('corFolga')
+         }
+     }*/
 
-    /*if (localStorage.getItem(mesExtenso[data.getMonth()]) == 4) {
+    if (localStorage.getItem(mesExtenso[data.getMonth()]) == 4) {
         if (tdDado2.innerHTML == "DOM") {
 
-            if (contador == 1 || contador == 4) {
+            if (contador == 1) {
                 tdDado2.classList.add('margensTabelaFinalSemanas')
                 tdDado2.classList.add('trabalhou') // adicionar classe trabalhou            
             }
         }
-    }*/
+    }
 
     //fim do ciclo for
 }
